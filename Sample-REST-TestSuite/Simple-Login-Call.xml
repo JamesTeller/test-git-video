@@ -13,71 +13,12 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
     <con:setting id="c3fbf613-f789-4fe0-a4e5-1757eba3ccc2fileName">Simple-Login-Call</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
-  <con:testStep id="f5656295-e145-4d87-8b00-6c91c131c5e3" name="DataSource Loop" type="datasourceloop">
+  <con:testStep type="VirtRunnerTestStep" name="StartService" id="49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4">
     <con:settings/>
     <con:config>
-      <dataSourceStep>DataSource</dataSourceStep>
-      <targetStep>Login</targetStep>
-      <discardResults>true</discardResults>
-    </con:config>
-    <con:config xsi:type="con:RestRequestStep" service="Ecommerce" resourcePath="/logout" methodName="Method 1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <con:restRequest name="Logout" mediaType="application/json" id="05080aa5-8817-44ff-ad88-cf8aec040aef">
-        <con:settings>
-          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting>
-        </con:settings>
-        <con:endpoint>http://localhost:8084</con:endpoint>
-        <con:request/>
-        <con:originalUri>http://localhost/logout</con:originalUri>
-        <con:assertion type="Response SLA Assertion" name="Response SLA" id="b93a1273-f7d5-495c-a13a-9a31c7e7979e">
-          <con:configuration>
-            <SLA>200</SLA>
-          </con:configuration>
-        </con:assertion>
-        <con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes" id="a93e34ad-2866-4bfd-be19-118887b06b77">
-          <con:settings/>
-          <con:configuration>
-            <codes>200</codes>
-          </con:configuration>
-        </con:assertion>
-        <con:credentials>
-          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
-          <con:authType>No Authorization</con:authType>
-        </con:credentials>
-        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-        <con:parameters/>
-        <con:parameterOrder>
-          <con:entry>sessionid</con:entry>
-        </con:parameterOrder>
-        <con:environmentSpec>
-          <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="613bb63e-dfae-4525-8f53-7cc0745a1be1">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="aaa8e0b8-c982-402f-aabc-53999ad72736">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="85fcf76d-cc70-4a0b-a2f6-7b043cf8233a">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="8adf9beb-0001-459f-b854-d8161046b013">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="19b3aa32-a1f5-474e-bd47-6ecf34074e03">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="834e9f34-445a-4d32-b042-ef79046664e3">
-            <con:authProfile>Inherit From Parent</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="712e7e53-7afa-4695-8bf2-bc7b9af8c08a">
-            <con:authProfile>No Authorization</con:authProfile>
-          </con:entry>
-          <con:entry environmentId="f27a7295-1f08-4642-a3be-7ae9878517f0">
-            <con:authProfile>No Authorization</con:authProfile>
-          </con:entry>
-        </con:environmentSpec>
-      </con:restRequest>
+      <url>localhost</url>
+      <server>EcommerceVirt</server>
+      <action>run</action>
     </con:config>
   </con:testStep>
   <con:testStep type="restrequest" name="Login" id="8c4c6e50-238e-4476-80dc-15d7b89fff4f">
@@ -103,8 +44,8 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry value="${DataSource#username}" key="username"/>
-          <con:entry value="${DataSource#password}" key="password"/>
+          <con:entry key="password" value="Login"/>
+          <con:entry key="username" value="Login123"/>
         </con:parameters>
         <con:parameterOrder>
           <con:entry>password</con:entry>
@@ -142,47 +83,6 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="datasource" name="DataSource" id="52ea16fa-e497-479b-9ff9-22b215f0799e">
-    <con:settings/>
-    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <con:dataSource type="Data Generator">
-        <con:configuration>
-          <generatedDataCount>10</generatedDataCount>
-          <generatorsTotalNumber>2</generatorsTotalNumber>
-          <lastSelectedProperty>-1</lastSelectedProperty>
-          <GeneratorType0>CUSTOM</GeneratorType0>
-          <PropertyName0>username</PropertyName0>
-          <repetitionCountusername>0</repetitionCountusername>
-          <repeatValuesusername>false</repeatValuesusername>
-          <CustomStringDataGeneratorFormatusername>%STR(5,10,True,True,True,True)</CustomStringDataGeneratorFormatusername>
-          <GeneratorType1>STR</GeneratorType1>
-          <PropertyName1>password</PropertyName1>
-          <repetitionCountpassword>0</repetitionCountpassword>
-          <repeatValuespassword>false</repeatValuespassword>
-          <PasswordDataGeneratorUseSpacespassword>true</PasswordDataGeneratorUseSpacespassword>
-          <PasswordDataGeneratorUsePunctuationMarkspassword>true</PasswordDataGeneratorUsePunctuationMarkspassword>
-          <PasswordDataGeneratorUseLetterspassword>true</PasswordDataGeneratorUseLetterspassword>
-          <PasswordDataGeneratorUseDigitspassword>true</PasswordDataGeneratorUseDigitspassword>
-          <PasswordDataGeneratorMaxCharacterCountpassword>10</PasswordDataGeneratorMaxCharacterCountpassword>
-          <PasswordDataGeneratorMinCharacterCountpassword>5</PasswordDataGeneratorMinCharacterCountpassword>
-          <escapeSpaceSequence/>
-        </con:configuration>
-      </con:dataSource>
-      <con:shared>true</con:shared>
-      <con:restartShared>true</con:restartShared>
-      <con:property>password</con:property>
-      <con:property>username</con:property>
-      <con:restartOnRun>true</con:restartOnRun>
-    </con:config>
-  </con:testStep>
-  <con:testStep type="VirtRunnerTestStep" name="StartService" id="49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4">
-    <con:settings/>
-    <con:config>
-      <url>localhost</url>
-      <server>EcommerceVirt</server>
-      <action>run</action>
-    </con:config>
-  </con:testStep>
   <con:testStep type="VirtRunnerTestStep" name="StopService" id="e7ca5e17-6eda-4ec7-9628-3cc48017145d">
     <con:settings/>
     <con:config>
@@ -193,11 +93,6 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
   </con:testStep>
   <con:properties/>
   <con:reportParameters/>
-  <con:breakPoints>
-    <con:testStepId>52ea16fa-e497-479b-9ff9-22b215f0799e</con:testStepId>
-    <con:status>NONE</con:status>
-    <con:properties/>
-  </con:breakPoints>
   <con:breakPoints>
     <con:testStepId>49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4</con:testStepId>
     <con:status>NONE</con:status>

@@ -1,10 +1,10 @@
-Ecommerce\Login.xml
-Ecommerce\buy.xml
-Ecommerce\logout.xml
 Ecommerce\search.xml
+Ecommerce\logout.xml
+Ecommerce\buy.xml
+Ecommerce\Login.xml
 Sample-REST-TestSuite\Simple-Login-Call.xml
-EcommerceVirt\%2Ftest.xml
-EcommerceVirt\buy.xml
-EcommerceVirt\login.xml
-EcommerceVirt\logout.xml
 EcommerceVirt\search.xml
+EcommerceVirt\logout.xml
+EcommerceVirt\login.xml
+EcommerceVirt\buy.xml
+EcommerceVirt\%2Ftest.xml

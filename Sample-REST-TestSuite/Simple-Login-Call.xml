@@ -37,6 +37,11 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
             <codes>200</codes>
           </con:configuration>
         </con:assertion>
+        <con:assertion type="Invalid HTTP Status Codes" id="6b41d8d9-5b44-4f03-a568-4a7023e171c3" name="Invalid HTTP Status Codes">
+          <con:configuration>
+            <codes>400</codes>
+          </con:configuration>
+        </con:assertion>
         <con:credentials>
           <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
           <con:authType>No Authorization</con:authType>

@@ -13,12 +13,12 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
     <con:setting id="c3fbf613-f789-4fe0-a4e5-1757eba3ccc2fileName">Simple-Login-Call</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
-  <con:testStep type="VirtRunnerTestStep" name="StopService" id="e7ca5e17-6eda-4ec7-9628-3cc48017145d">
+  <con:testStep type="VirtRunnerTestStep" name="StartService" id="49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4">
     <con:settings/>
     <con:config>
       <url>localhost</url>
       <server>EcommerceVirt</server>
-      <action>stop</action>
+      <action>run</action>
     </con:config>
   </con:testStep>
   <con:testStep type="restrequest" name="Login" id="8c4c6e50-238e-4476-80dc-15d7b89fff4f">
@@ -37,6 +37,15 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
             <codes>200</codes>
           </con:configuration>
         </con:assertion>
+        <con:assertion type="JsonPath Match" id="e4fe674a-520c-4421-9ae5-0cefd66581a2" name="JSONPath Match">
+          <con:configuration>
+            <path>$['sessionid']</path>
+            <content>"8553095773751551"</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
         <con:credentials>
           <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
           <con:authType>No Authorization</con:authType>
@@ -44,8 +53,8 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:jmsPropertyConfig/>
         <con:parameters>
-          <con:entry value="Login123" key="username"/>
-          <con:entry value="Login" key="password"/>
+          <con:entry key="password" value="Login"/>
+          <con:entry key="username" value="Login123"/>
         </con:parameters>
         <con:parameterOrder>
           <con:entry>username</con:entry>
@@ -83,18 +92,23 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="VirtRunnerTestStep" name="StartService" id="49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4">
+  <con:testStep type="VirtRunnerTestStep" name="StopService" id="e7ca5e17-6eda-4ec7-9628-3cc48017145d">
     <con:settings/>
     <con:config>
       <url>localhost</url>
       <server>EcommerceVirt</server>
-      <action>run</action>
+      <action>stop</action>
     </con:config>
   </con:testStep>
   <con:properties/>
   <con:reportParameters/>
   <con:breakPoints>
     <con:testStepId>49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e7ca5e17-6eda-4ec7-9628-3cc48017145d</con:testStepId>
     <con:status>NONE</con:status>
     <con:properties/>
   </con:breakPoints>

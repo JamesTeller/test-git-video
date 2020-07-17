@@ -13,6 +13,18 @@ the same ports on the virtual service.</con:description>
   <con:jmsConnectionContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
   <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
     <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
 // This code is often used for adding custom authentication to SoapUI Pro tests
@@ -29,18 +41,6 @@ the same ports on the virtual service.</con:description>
 //   headers.put('auth_token2', token)
 //   request.requestHeaders = headers
 // }</con:script>
-  </con:eventHandlers>
-  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
-    <con:script>// Save all test step results into files
-// Change the directory path in line 5 to a location where you want to store details
-// then uncomment lines 5 to 10
-
-// filePath = 'C:\\tempOutputDirectory\\'
-// fos = new FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
-// pw = new PrintWriter(fos)
-// testStepResult.writeTo(pw)
-// pw.close()
-// fos.close()</con:script>
   </con:eventHandlers>
   <con:authRepository/>
   <con:tags/>
